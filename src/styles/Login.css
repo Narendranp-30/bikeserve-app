@@ -1,0 +1,39 @@
+.login-container {
+  height: 100vh;
+}
+
+.illustration {
+  background-color: #006666; /* This color can be adjusted to match your illustration */
+}
+
+.illustration img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.form-wrapper {
+  background-color: #f4b400;
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+}
+
+.btn-primary {
+  background-color: #006666;
+  border-color: #006666;
+}
+
+.btn-primary:hover {
+  background-color: #004c4c;
+  border-color: #004c4c;
+}
+
+a {
+  color: #006666;
+}
+
+a:hover {
+  text-decoration: underline;
+}

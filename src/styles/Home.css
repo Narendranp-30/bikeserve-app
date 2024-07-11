@@ -1,0 +1,35 @@
+.carousel-container {
+  margin-top: -150px; /* Adjust this value based on your navbar height */
+}
+
+.padding-large {
+  padding: 50px 0; /* Adjust as needed */
+}
+
+.section-title {
+  margin-bottom: 30px;
+}
+
+.heading-color {
+  color: #333; /* Adjust as needed */
+}
+
+.service-list {
+  margin-top: 20px;
+}
+
+.service-item {
+  margin-bottom: 30px;
+}
+
+#footer {
+  padding: 20px 0;
+  background-color: #343a40; /* Matching background color */
+  color: white;
+}
+
+.carousel-container .carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensures the image covers the entire space */
+}

@@ -1,0 +1,47 @@
+/* Navbar.css */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5) !important; /* Transparent background with !important */
+  transition: background 0.3s ease;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f4b400 !important; /* Hover color */
+}
+
+.btn-link {
+  color: #fff !important;
+}
+
+.btn-link:hover {
+  color: #f4b400 !important; /* Hover color for button */
+}
+
+/* Additional styles for container and alignment */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+/* Add padding to the top of the main content to prevent overlap with the navbar */
+.main-content {
+  padding-top: 70px; /* Adjust this value based on your navbar height */
+}

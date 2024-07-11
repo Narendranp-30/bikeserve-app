@@ -1,0 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: #1a1f36;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+}
+
+body {
+  min-height: 100%;
+  background-color: #ffffff;
+}
+body {
+  background-image: url('https://images.pexels.com/photos/4513031/pexels-photo-4513031.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'); /* Update with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.customer-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f8f9fa;
+  color: #1a1f36;
+}
+
+.dashboard-container {
+  max-width: 800px;
+  margin: 20px auto; /* Auto margin on left and right centers the container */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #1a1f36;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+
+.dashboard-container h2 {
+  margin-bottom: 10px;
+}
+
+.services-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.services-list li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.services-list h4 {
+  margin-top: 10px;
+}
+
+.repaired-parts-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.repaired-parts-list li {
+  margin-bottom: 5px;
+}
+
+.repaired-part-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.repaired-part-label input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.repaired-part-label span {
+  flex: 1;
+}
+
+.error-message {
+  color: #f44336;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+}
+
+      /* Add styles to ensure alignment and appearance */
+      .checkbox-group {
+        margin-bottom: 20px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Ensures checkbox on left and label on right */
+        margin-bottom: 10px;
+      }
+      
+
+      
+      
+      .checkbox-item input[type="checkbox"] {
+        margin-right: 10px;
+      }
