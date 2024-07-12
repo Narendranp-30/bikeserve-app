@@ -85,9 +85,13 @@ Stores information about the users (owners and customers).
 
 {
     "_id": "ObjectId",
+    
     "email": "String",
+    
     "password": "String",
+    
     "role": "String",
+    
     "serviceCenter": "ObjectId"
 }
 
