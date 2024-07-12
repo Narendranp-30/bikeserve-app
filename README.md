@@ -84,6 +84,7 @@ bikeserve/
 Stores information about the users (owners and customers).
 
 {
+
     "_id": "ObjectId",
     
     "email": "String",
@@ -93,6 +94,7 @@ Stores information about the users (owners and customers).
     "role": "String",
     
     "serviceCenter": "ObjectId"
+    
 }
 
 
@@ -100,59 +102,103 @@ Stores information about the users (owners and customers).
 
 [
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d15b",
+    
     "email": "erode1@service.com",
+    
     "password": "$2b$10$EixZ0hM/Q.fEjDSYWFSOYO3JvYK4Zvlh/QjBkjk0/uY6c1G6jYBeK",  // Hashed password
+    
     "role": "owner",
+    
     "serviceCenter": "64a7f27c45a2f4d3e6f1d162"
+    
   },
+  
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d15c",
+    
     "email": "erode2@service.com",
+    
     "password": "$2b$10$EixZ0hM/Q.fEjDSYWFSOYO3JvYK4Zvlh/QjBkjk0/uY6c1G6jYBeK",  // Hashed password
+    
     "role": "owner",
+    
     "serviceCenter": "64a7f27c45a2f4d3e6f1d163"
+    
   },
+  
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d15d",
+    
     "email": "prasabth@gmail.com",
+    
     "password": "$2b$10$EixZ0hM/Q.fEjDSYWFSOYO3JvYK4Zvlh/QjBkjk0/uY6c1G6jYBeK",  // Hashed password
+    
     "role": "customer",
+    
     "serviceCenter": null
+    
   }
 ]
 
 2.Services Collection:
 Stores details of the services provided.
+
 {
   "_id": "ObjectId",
+  
   "name": "String",
+  
   "serviceType": "String",
+  
   "bikeType": "String",
+  
   "description": "String",
+  
   "price": "Number",
+  
   "serviceCenter": "ObjectId"  // Reference to the ServiceCenter
+  
 }
 
 |------Sample data for services
+
 [
   {
     "_id": "64a7f27c45a2f4d3e6f1d165",
+    
     "name": "Narendra",
+    
     "serviceType": "Water wash",
+    
     "bikeType": "Sport",
+    
     "description": "Basic exterior wash for sport bikes.",
+    
     "price": 20.0,
+    
     "serviceCenter": "64a7f27c45a2f4d3e6f1d162"
+    
   },
+  
   {
     "_id": "64a7f27c45a2f4d3e6f1d166",
+    
     "name": "Prasanth",
+    
     "serviceType": "Oil change",
+    
     "bikeType": "Cruiser",
+    
     "description": "Perform oil change only",
+    
     "price": 50.0,
+    
     "serviceCenter": "64a7f27c45a2f4d3e6f1d163"
+    
   }
 ]
 
@@ -162,9 +208,13 @@ Stores information about different service centers.
 
 {
   "_id": "ObjectId",
+  
   "name": "String",
+  
   "city": "String",
+  
   "address": "String"
+  
 }
 
 |------Sample data
@@ -172,15 +222,23 @@ Stores information about different service centers.
 [
   {
     "_id": "64a7f27c45a2f4d3e6f1d162",
+    
     "name": "Erode1 Bike Service Center",
+    
     "city": "Erode",
+    
     "address": "1234 Bike Lane, NY"
   },
+  
   {
     "_id": "64a7f27c45a2f4d3e6f1d163",
+    
     "name": "Erode2 Bike Service Center",
+    
     "city": "Erode",
+    
     "address": "5678 Wheel Street, CA"
+    
   }
 ]
 
