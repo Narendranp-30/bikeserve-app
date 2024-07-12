@@ -148,6 +148,7 @@ Stores information about the users (owners and customers).
 Stores details of the services provided.
 
 {
+
   "_id": "ObjectId",
   
   "name": "String",
@@ -168,6 +169,7 @@ Stores details of the services provided.
 
 [
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d165",
     
     "name": "Narendra",
@@ -185,6 +187,7 @@ Stores details of the services provided.
   },
   
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d166",
     
     "name": "Prasanth",
@@ -207,6 +210,7 @@ Stores details of the services provided.
 Stores information about different service centers.
 
 {
+
   "_id": "ObjectId",
   
   "name": "String",
@@ -221,6 +225,7 @@ Stores information about different service centers.
 
 [
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d162",
     
     "name": "Erode1 Bike Service Center",
@@ -231,6 +236,7 @@ Stores information about different service centers.
   },
   
   {
+  
     "_id": "64a7f27c45a2f4d3e6f1d163",
     
     "name": "Erode2 Bike Service Center",
