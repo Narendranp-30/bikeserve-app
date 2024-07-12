@@ -180,6 +180,14 @@ const ServiceForm = ({ onSubmit }) => {
     }
   };
 
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   return (
     <div style={styles.formContainer}>
       <h2 style={styles.heading}>Add a New Service</h2>
@@ -215,12 +223,12 @@ const ServiceForm = ({ onSubmit }) => {
           value={serviceType}
           onChange={handleServiceTypeChange}
           required
-          style={styles.input}
+          style={styles.select}
         >
           <option value="">Select Service Type</option>
-          {serviceTypes.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
+          {serviceTypes.map((service) => (
+            <option key={service.value} value={service.value}>
+              {service.label}
             </option>
           ))}
         </select>
@@ -234,31 +242,31 @@ const ServiceForm = ({ onSubmit }) => {
           style={styles.input}
         />
         {errors.bikeType && <div style={styles.error}>{errors.bikeType}</div>}
-        <fieldset style={styles.fieldset}>
-          <legend>Repaired Parts</legend>
+        <div style={styles.partsContainer}>
+          <label style={styles.label}>Repaired Parts:</label>
           {partsOptions.map((part) => (
             <label key={part.name} style={styles.checkboxLabel}>
               <input
                 type="checkbox"
                 value={part.name}
+                checked={repairedParts.includes(part)}
                 onChange={handlePartsChange}
-                style={styles.checkbox}
               />
               {part.name} (${part.price})
             </label>
           ))}
-        </fieldset>
+        </div>
         {errors.repairedParts && <div style={styles.error}>{errors.repairedParts}</div>}
         <select
           value={servicePerson}
           onChange={(e) => setServicePerson(e.target.value)}
           required
-          style={styles.input}
+          style={styles.select}
         >
           <option value="">Select Service Person</option>
           {servicePersons.map((person) => (
             <option key={person.name} value={person.name}>
-              {person.name} - {person.experience}
+              {person.name} ({person.experience})
             </option>
           ))}
         </select>
@@ -269,7 +277,7 @@ const ServiceForm = ({ onSubmit }) => {
           onChange={(e) => setComplaints(e.target.value)}
           required
           style={styles.textarea}
-        ></textarea>
+        />
         {errors.complaints && <div style={styles.error}>{errors.complaints}</div>}
         <textarea
           placeholder="Description"
@@ -277,17 +285,23 @@ const ServiceForm = ({ onSubmit }) => {
           onChange={(e) => setDescription(e.target.value)}
           required
           style={styles.textarea}
-        ></textarea>
+        />
         {errors.description && <div style={styles.error}>{errors.description}</div>}
         <input
           type="date"
           value={serviceDate}
           onChange={(e) => setServiceDate(e.target.value)}
+          min={getTodayDate()} // Disable past dates
           required
           style={styles.input}
         />
         {errors.serviceDate && <div style={styles.error}>{errors.serviceDate}</div>}
-        <select value={district} onChange={handleDistrictChange} required style={styles.input}>
+        <select
+          value={district}
+          onChange={handleDistrictChange}
+          required
+          style={styles.select}
+        >
           <option value="">Select District</option>
           {Object.keys(districts).map((districtKey) => (
             <option key={districtKey} value={districtKey}>
@@ -296,89 +310,91 @@ const ServiceForm = ({ onSubmit }) => {
           ))}
         </select>
         {errors.district && <div style={styles.error}>{errors.district}</div>}
-        <select value={serviceCenter} onChange={handleServiceCenterChange} required style={styles.input}>
-          <option value="">Select Service Center</option>
-          {district &&
-            districts[district].map((center) => (
+        {district && (
+          <select
+            value={serviceCenter}
+            onChange={handleServiceCenterChange}
+            required
+            style={styles.select}
+          >
+            <option value="">Select Service Center</option>
+            {districts[district].map((center) => (
               <option key={center.id} value={center.id}>
                 {center.name}
               </option>
             ))}
-        </select>
+          </select>
+        )}
         {errors.serviceCenter && <div style={styles.error}>{errors.serviceCenter}</div>}
-        <div style={styles.price}>Price: ${price}</div>
-        <div style={styles.price}>Labor Charge: ${showLaborCharge ? laborCharge : 0}</div>
-        <div style={styles.price}>Total Price: ${price + (showLaborCharge ? laborCharge : 0)}</div>
-        <button type="submit" style={styles.button}>Submit</button>
+        {showLaborCharge && <div>Labor Charge: ${laborCharge}</div>}
+        <div>Total Price: ${price + (showLaborCharge ? laborCharge : 0)}</div>
+        <button type="submit" style={styles.button}>
+          Add Service
+        </button>
       </form>
     </div>
   );
 };
+
 const styles = {
   formContainer: {
     maxWidth: '600px',
     margin: '0 auto',
     padding: '20px',
-    border: '1px solid #333', // Darker border
-    borderRadius: '5px',
-    backgroundColor: '#1a1a1a', // Dark background
+    backgroundColor: '#f9f9f9',
+    borderRadius: '8px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   heading: {
     textAlign: 'center',
     marginBottom: '20px',
-    color: '#fff', // White text
+    fontSize: '24px',
+    color: '#333',
   },
   input: {
     width: '100%',
     padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    border: '1px solid #444', // Darker border
-    backgroundColor: '#333', // Darker input background
-    color: '#fff', // White text
+    marginBottom: '10px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    boxSizing: 'border-box',
+  },
+  select: {
+    width: '100%',
+    padding: '10px',
+    marginBottom: '10px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    boxSizing: 'border-box',
+  },
+  partsContainer: {
+    marginBottom: '10px',
+  },
+  checkboxLabel: {
+    display: 'block',
+    marginBottom: '5px',
   },
   textarea: {
     width: '100%',
     padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    border: '1px solid #444', // Darker border
-    backgroundColor: '#333', // Darker input background
-    color: '#fff', // White text
-    height: '100px',
-  },
-  fieldset: {
-    border: '1px solid #444', // Darker border
-    borderRadius: '5px',
-    padding: '10px',
-    margin: '10px 0',
-    color: '#fff', // White text
-  },
-  checkboxLabel: {
-    display: 'block',
-    margin: '5px 0',
-    color: '#fff', // White text
-  },
-  checkbox: {
-    marginRight: '10px',
+    marginBottom: '10px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    boxSizing: 'border-box',
   },
   button: {
     width: '100%',
     padding: '10px',
+    borderRadius: '4px',
+    border: 'none',
     backgroundColor: '#007bff',
     color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
+    fontSize: '16px',
     cursor: 'pointer',
-  },
-  price: {
-    margin: '10px 0',
-    fontWeight: 'bold',
-    color: '#fff', // White text
   },
   error: {
     color: 'red',
-    margin: '5px 0',
+    marginBottom: '10px',
   },
 };
 
