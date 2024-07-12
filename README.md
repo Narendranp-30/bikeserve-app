@@ -251,57 +251,98 @@ Stores information about different service centers.
 Sample with code:
 
 const mongoose = require('mongoose');
+
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
+
   email: { type: String, required: true, unique: true },
+  
   password: { type: String, required: true },
+  
   role: { type: String, required: true },
+  
   serviceCenter: { type: mongoose.Schema.Types.ObjectId, ref: 'ServiceCenter' }
+
 });
 
 const serviceSchema = new mongoose.Schema({
+
   name: { type: String, required: true },
+  
   serviceType: { type: String, required: true },
+  
   bikeType: { type: String, required: true },
+  
   description: { type: String },
+  
   price: { type: Number, required: true },
+  
   serviceCenter: { type: mongoose.Schema.Types.ObjectId, ref: 'ServiceCenter' }
+
 });
 
 const serviceCenterSchema = new mongoose.Schema({
+
   name: { type: String, required: true },
+  
   city: { type: String, required: true },
+  
   address: { type: String, required: true }
+
 });
 
+
 const User = mongoose.model('User', userSchema);
+
 const Service = mongoose.model('Service', serviceSchema);
+
 const ServiceCenter = mongoose.model('ServiceCenter', serviceCenterSchema);
 
+
+
 async function initializeDatabase() {
+
   await mongoose.connect('mongodb://localhost:27017/bikeServiceDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
+
 
   const hashedPassword = await bcrypt.hash('password123', 10);
 
+  
   const serviceCenters = [
-    { name: 'Turbo Bike Service Center', city: 'New York', address: '1234 Bike Lane, NY' },
-    { name: 'Speedy Bike Service Center', city: 'San Francisco', address: '5678 Wheel Street, CA' }
+  
+    { name: 'Erode Bike Service Center', city: 'Erode', address: '1234 Bike Lane, NY' },
+    
+    { name: 'Kovai Bike Service Center', city: 'Kovai', address: '5678 Wheel Street, CA' }
+  
   ];
 
   const createdServiceCenters = await ServiceCenter.insertMany(serviceCenters);
 
-  const users = [
+   const users = [
+ 
     { email: 'owner1@example.com', password: hashedPassword, role: 'owner', serviceCenter: createdServiceCenters[0]._id },
+    
     { email: 'owner2@example.com', password: hashedPassword, role: 'owner', serviceCenter: createdServiceCenters[1]._id },
+    
     { email: 'customer1@example.com', password: hashedPassword, role: 'customer', serviceCenter: null }
+  
   ];
 
   await User.insertMany(users);
 
+  
   const services = [
-    { name: 'Basic Wash', serviceType: 'Exterior', bikeType: 'Sport', description: 'Basic exterior wash for sport bikes.', price: 20.0, serviceCenter: createdServiceCenters[0]._id },
+  
+    
+    { name: 'Basic Wash', serviceType: 'Exterior', bikeType: 'Sport', description: 'Basic exterior wash for sport bikes.', price: 20.0, serviceCenter: 
+    
+    createdServiceCenters[0]._id },
+    
+    
     { name: 'Full Detailing', serviceType: 'Detailing', bikeType: 'Cruiser', description: 'Complete detailing for cruiser bikes.', price: 50.0, serviceCenter: createdServiceCenters[1]._id }
+
   ];
 
   await Service.insertMany(services);
@@ -313,29 +354,46 @@ initializeDatabase().catch(err => console.error(err));
 
 
 *********************************************************************Execution*********************************************************************************
-Deployment and Execution Instructions
-Prerequisites
+1.Deployment and Execution Instructions
+ Prerequisites
+
 Node.js: Ensure Node.js (version 12 or higher) is installed on your system. Download and install from Node.js official site.
+
 MongoDB: Ensure MongoDB is installed and running on your local machine or have access to a remote MongoDB instance. Download and install from MongoDB official site.
 
 
 1.Project Setup
+
 Clone the Repository:
+
         git clone <your-repo-url>
-cd <your-repo-name>
+        cd <your-repo-name>
 2. Backend Setup:
+
 Navigate to the backend directory and install dependencies:
+
 cd backend
+
 npm install
+
 Create a .env file in the backend directory with the following content:
+
 .env
+
 PORT=5000
+
 MONGO_URI=mongodb://localhost:27017/bikeServiceDB
+
 JWT_SECRET=your_jwt_secret_key
+
 (run node server.js)
+
 3. Frontend Setup:
+
 cd ../bikeserve
+
 npm install
+
 
 Run npm start
 
