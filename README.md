@@ -90,6 +90,8 @@ Stores information about the users (owners and customers).
   "role": "String",  // "owner" or "customer"
   "serviceCenter": "ObjectId"  // Reference to the ServiceCenter
 }
+
+
 |------Sample data for user
 [
   {
