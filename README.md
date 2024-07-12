@@ -93,6 +93,7 @@ Stores information about the users (owners and customers).
 
 
 |------Sample data for user
+
 [
   {
     "_id": "64a7f27c45a2f4d3e6f1d15b",
