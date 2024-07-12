@@ -1,31 +1,31 @@
 ******************************************************************Installable Packages:***************************************************************************
 For Backend:
 bikeserve/backend
-├── bcryptjs@2.4.3
-├── cors@2.8.5
-├── dotenv@8.2.0
-├── express@4.17.1
-├── jsonwebtoken@8.5.1
-├── mongoose@5.11.15
-├── nodemailer@6.4.18
-└── nodemon@2.0.7
+* bcryptjs@2.4.3
+* cors@2.8.5
+* dotenv@8.2.0
+* express@4.17.1
+* jsonwebtoken@8.5.1
+* mongoose@5.11.15
+* nodemailer@6.4.18
+* nodemon@2.0.7
 
 
 For Frontend path:
 bikeserve/
-├── @babel/core@7.12.10
-├── @babel/preset-env@7.12.11
-├── @babel/preset-react@7.12.10
-├── axios@0.21.1
-├── babel-loader@8.2.2
-├── eslint-plugin-react@7.22.0
-├── eslint@7.19.0
-├── react-dom@17.0.1
-├── react-router-dom@5.2.0
-├── react@17.0.1
-├── webpack-cli@4.5.0
-├── webpack-dev-server@3.11.2
-└── webpack@5.21.2
+* @babel/core@7.12.10
+*  @babel/preset-env@7.12.11
+* @babel/preset-react@7.12.10
+* axios@0.21.1
+* babel-loader@8.2.2
+* eslint-plugin-react@7.22.0
+* eslint@7.19.0
+* react-dom@17.0.1
+* react-router-dom@5.2.0
+* react@17.0.1
+* webpack-cli@4.5.0
+* webpack-dev-server@3.11.2
+* webpack@5.21.2
 
 ***********************************************************************Project Overview************************************************************************
 
