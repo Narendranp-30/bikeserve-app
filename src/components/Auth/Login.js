@@ -18,7 +18,6 @@ const Login = ({ onLogin }) => {
     }
 
     try {
-      
       const user = await onLogin(email, password);
       console.log(user);
       navigate('/customer-dashboard');
@@ -31,7 +30,7 @@ const Login = ({ onLogin }) => {
     <div className="container-fluid login-container">
       <div className="row h-100">
         <div className="col-md-6 illustration d-flex align-items-center justify-content-center">
-          <img src="path/to/illustration.jpg" alt="Illustration" />
+          <img src="/login.gif" alt="Illustration" />
         </div>
         <div className="col-md-6 d-flex flex-column align-items-center justify-content-center form-wrapper">
           <h2>Already Members</h2>
