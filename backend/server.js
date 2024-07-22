@@ -15,7 +15,7 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/bike_service', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://nprasanth372:narendra372@cluster0.5dlb924.mongodb.net/Bike_Service?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
