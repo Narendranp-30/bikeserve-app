@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Illustration from './login.gif'
 import '../../styles/Register.css'; // Adjust the path based on your project structure
 
 const Register = () => {
@@ -58,7 +59,7 @@ const Register = () => {
     <div className="container-fluid register-container">
       <div className="row h-100">
         <div className="col-md-6 illustration d-flex align-items-center justify-content-center">
-          <img src="/path/to/illustration.jpg" alt="Illustration" />
+          <img src={Illustration} alt="Illustration" />
         </div>
         <div className="col-md-6 d-flex flex-column align-items-center justify-content-center form-wrapper">
           <h2>Register</h2>
