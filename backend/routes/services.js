@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
 
     // Send email to owner
     const mailOptions = {
-      from: 'nprasanth372@gmail.com',
+      from: {email},
       to: 'prasanthnarendra92@gmail.com',
       subject: 'New Service Submission',
       text: `
@@ -172,7 +172,7 @@ router.post('/sendEmail', async (req, res) => {
   
       res.status(200).json({ message: 'Email sent successfully' });
     }
-    else if(status=='Out for delievery')
+    else if(status=='Out for delivery')
       {
         const mailOptions = {
           from: 'prasanthnarendra92@gmail.com',

@@ -82,3 +82,19 @@
 .edit-form .btn {
   margin-right: 10px;
 }
+
+td.status-pending{
+  color: red;
+}
+
+td.status-approved {
+  color: yellow;
+}
+
+td.status-out-for-delivery {
+  color: green;
+}
+
+td.status-completed {
+  color: green;
+}

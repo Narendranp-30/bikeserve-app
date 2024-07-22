@@ -177,7 +177,22 @@ const OwnerDashboard = ({ user, onLogout }) => {
     }
   };
 
-  const uniqueDistricts = [...new Set(services.map(service => service.district)), "Erode"];
+  const uniqueDistricts = [...new Set(services.map(service => service.district)),];
+
+  const getStatusClass = (status) => {
+    switch (status) {
+      case 'Pending':
+        return 'status-pending';
+      case 'approved':
+        return 'status-approved';
+      case 'Out for delivery':
+        return 'status-out-for-delivery';
+      case 'Completed':
+        return 'status-completed';
+      default:
+        return '';
+    }
+  };
 
   return (
     <>
@@ -270,9 +285,11 @@ const OwnerDashboard = ({ user, onLogout }) => {
                   <p className="owner-dashboard-card-detail">Service Date: {service.serviceDate}</p>
                   <p className="owner-dashboard-card-detail">District: {service.district}</p>
                   <p className="owner-dashboard-card-detail">Service Center: {service.serviceCenter}</p>
-                  <p className="owner-dashboard-card-detail">Status: {service.status}</p>
+                  <p className={`owner-dashboard-card-detail ${getStatusClass(service.status)}`}>Status: {service.status}</p>
                   <div className="owner-dashboard-card-buttons">
-                    <FaEdit className="owner-dashboard-card-icon" onClick={() => handleEditClick(service)} size={24} />
+                    {(service.status !== 'Out for delivery' && service.status !== 'Completed') && (
+                      <FaEdit className="owner-dashboard-card-icon" onClick={() => handleEditClick(service)} size={24} />
+                    )}
                     <FaTrash className="owner-dashboard-card-icon" onClick={() => handleDeleteClick(service._id)} size={24} />
                     {service.status === 'Pending' && (
                       <FaCheckCircle className="owner-dashboard-card-icon take-service" onClick={() => handleTakeServiceClick(service)} size={24} />

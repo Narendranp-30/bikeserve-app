@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Illustration from './login.gif'
 import '../../styles/Login.css'; // Custom styles
 
 const Login = ({ onLogin }) => {
@@ -30,7 +31,7 @@ const Login = ({ onLogin }) => {
     <div className="container-fluid login-container">
       <div className="row h-100">
         <div className="col-md-6 illustration d-flex align-items-center justify-content-center">
-          <img src="/login.gif" alt="Illustration" />
+          <img src={Illustration} alt="Illustration" />
         </div>
         <div className="col-md-6 d-flex flex-column align-items-center justify-content-center form-wrapper">
           <h2>Already Members</h2>

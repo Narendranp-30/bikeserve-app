@@ -1,7 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('https://th.bing.com/th/id/R.5ab1901d300dd5c2b0756a1618582064?rik=NyrYTrITarSmNQ&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f5%2fd%2f7%2f956471-hd-glitter-wallpaper-1920x1084-samsung-galaxy.jpg&ehk=TxA6FALz2eiCA8aICmIGhFJzletOKeq69r%2fntY6DXCI%3d&risl=&pid=ImgRaw&r=0');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
 .owner-dashboard-container {
   padding: 20px;
-  background: rgba(56, 37, 37, 0.253); /* Adding a slight white background to the container for better readability */
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for readability */
   border-radius: 8px;
+  margin: 20px auto;
+  max-width: 1200px;
 }
 
 .search-container {
@@ -10,7 +23,6 @@
   align-items: center;
   margin-bottom: 20px;
 }
-
 
 .search-input {
   padding: 10px;
@@ -38,6 +50,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-left: 60px;
 }
 
 .owner-dashboard-card {
@@ -57,9 +70,6 @@
 .owner-dashboard-card-title {
   font-size: 18px;
   margin-bottom: 10px;
-}
-.owner-dashboard-card-grid {
-  margin-left: 60px;
 }
 
 .owner-dashboard-card-detail {
@@ -93,6 +103,7 @@
   background-color: #007bff;
   color: white;
 }
+
 .filter-container {
   display: flex;
   justify-content: center;
@@ -107,3 +118,20 @@
 .owner-dashboard-card-icon {
   cursor: pointer;
 }
+
+.status-pending {
+  color: red;
+}
+
+.status-approved {
+  color: yellow;
+}
+
+.status-out-for-delivery {
+  color: green;
+}
+
+.status-completed {
+  color: green;
+}
+/* https://th.bing.com/th/id/R.5ab1901d300dd5c2b0756a1618582064?rik=NyrYTrITarSmNQ&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f5%2fd%2f7%2f956471-hd-glitter-wallpaper-1920x1084-samsung-galaxy.jpg&ehk=TxA6FALz2eiCA8aICmIGhFJzletOKeq69r%2fntY6DXCI%3d&risl=&pid=ImgRaw&r=0 */

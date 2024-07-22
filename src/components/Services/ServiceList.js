@@ -66,6 +66,31 @@ const ServiceList = () => {
     }
   };
 
+  const getStatusClass = (status) => {
+    switch (status) {
+      case 'Pending':
+        return 'status-pending';
+      case 'Approved':
+        return 'status-approved';
+      case 'Out for delivery':
+        return 'status-out-for-delivery';
+      case 'Completed':
+        return 'status-completed';
+      default:
+        return '';
+    }
+  };
+
+  useEffect(() => {
+    // Dynamically apply status classes to the table rows
+    filterservices.forEach(service => {
+      const row = document.getElementById(`service-row-${service._id}`);
+      if (row) {
+        row.className = getStatusClass(service.status);
+      }
+    });
+  }, [filterservices]);
+
   return (
     <div className="service-list-container bg-dark text-light">
       <div className="container">
@@ -217,7 +242,7 @@ const ServiceList = () => {
             </thead>
             <tbody>
               {filterservices.map((service) => (
-                <tr key={service._id}>
+                <tr key={service._id} id={`service-row-${service._id}`}>
                   <td>{service.name}</td>
                   <td>{service.email}</td>
                   <td>{service.phone}</td>
@@ -228,12 +253,16 @@ const ServiceList = () => {
                   <td>{service.complaints}</td>
                   <td>{service.description}</td>
                   <td>${service.price}</td>
-                  <td>{service.status}</td>
-                  {/* <td>{new Date(service.serviceDate).toLocaleDateString()}</td> */}
+                  <td className={getStatusClass(service.status)}>{service.status}</td>
                   <td>{service.date}</td>
                   <td>
-                    <button className="btn btn-primary btn-sm" onClick={() => handleEdit(service)}>Edit</button>
-                   
+                    <button
+                      className="btn btn-primary btn-sm"
+                      onClick={() => handleEdit(service)}
+                      disabled={service.status === 'Out for delivery' || service.status === 'Completed'}
+                    >
+                      Edit
+                    </button>
                     <button className="btn btn-danger btn-sm" onClick={() => handleDelete(service._id)}>Delete</button>
                   </td>
                 </tr>
@@ -247,7 +276,6 @@ const ServiceList = () => {
 };
 
 export default ServiceList;
-
 
 
 //workinh until crud
