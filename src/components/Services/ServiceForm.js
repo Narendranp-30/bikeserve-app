@@ -34,9 +34,9 @@ const partsOptions = [
 ];
 
 const servicePersons = [
-  { name: 'John Doe', experience: '5 years' },
-  { name: 'Jane Smith', experience: '8 years' },
-  { name: 'Bob Johnson', experience: '3 years' },
+  { name: 'John Doe', experience: '' },
+  { name: 'Jane Smith', experience: '' },
+  { name: 'Bob Johnson', experience: '' },
 ];
 
 const laborCharge = 50;
