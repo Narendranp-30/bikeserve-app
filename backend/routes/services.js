@@ -179,7 +179,7 @@ router.post('/sendEmail', async (req, res) => {
           to: customerEmail,
           subject: 'Service completed',
           text: `
-            Your service Request is completed and delivered:
+            Your service is completed and delivered:
                  Here Your Details
             Service Type: ${serviceDetails.serviceType}
             Bike Type: ${serviceDetails.bikeType}

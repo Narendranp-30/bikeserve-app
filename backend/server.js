@@ -33,14 +33,18 @@ const defaultCredentials = [
 ];
 
 // Route to get default credentials
-app.get('/api/defaultCredentials', (req, res) => {
-  res.json(defaultCredentials);
-});
+// app.get('/api/defaultCredentials', (req, res) => {
+//   res.json(defaultCredentials);
+// });
 
 // Register route
 app.post('/auth/register', async (req, res) => {
   const { email, password, role, phoneNumber } = req.body;
   try {
+    let user = await User.findOne({email});
+    if(user){
+      return res.sendStatus(400).json({message: 'User already exists'})
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ email, password: hashedPassword, role, phoneNumber });
     await newUser.save();

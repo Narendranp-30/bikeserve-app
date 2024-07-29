@@ -8,7 +8,7 @@ const OwnerNavbar = ({ onLogout }) => {
     <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
-          Bike Service App
+          Turbo Bike Service
         </div>
         <div className="navbar-links">
           <button onClick={onLogout}>Logout</button>

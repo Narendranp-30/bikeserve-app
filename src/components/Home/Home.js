@@ -94,7 +94,7 @@ const Home = () => {
 
       <footer id="footer" className="text-center">
         <Container>
-          <p>&copy; 2024 Turbo Car Wash. All rights reserved.</p>
+          <p>&copy; 2024 Turbo Car Services. All rights reserved.</p>
         </Container>
       </footer>
     </div>

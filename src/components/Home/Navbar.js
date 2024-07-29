@@ -7,7 +7,7 @@ const Navbar = ({ user, onLogout }) => {
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
     <div className="container">
       <Link to="/home" className="navbar-brand">
-        Bike Service App
+        Turbo Bike Service
       </Link>
       <button
         className="navbar-toggler"

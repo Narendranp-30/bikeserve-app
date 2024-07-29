@@ -65,6 +65,7 @@ const ServiceForm = ({ onSubmit }) => {
   const [district, setDistrict] = useState('');
   const [serviceCenter, setServiceCenter] = useState('');
   const [status, setStatus] = useState('Pending'); // Default status
+  
 
   const handleDistrictChange = (e) => {
     setDistrict(e.target.value);
@@ -107,6 +108,8 @@ const ServiceForm = ({ onSubmit }) => {
     } else if (!/^\d{10}$/.test(phone)) {
       newErrors.phone = 'Phone number is invalid';
     }
+
+
     if (!serviceType) newErrors.serviceType = 'Service type is required';
     if (!bikeType) newErrors.bikeType = 'Bike type is required';
     if (!repairedParts.length) newErrors.repairedParts = 'At least one repaired part is required';
@@ -120,7 +123,11 @@ const ServiceForm = ({ onSubmit }) => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
+// const re = /^[5-9]\d{9}$/;
+    // const re = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=<>?{}[\]~]).{6,}$/;
+    // return re.test(password);
+    //const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // return re.test(String(email).toLowerCase());
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -187,7 +194,14 @@ const ServiceForm = ({ onSubmit }) => {
     const day = String(today.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
-
+  // const getMaxDate = () => {
+  //   const today = new Date();
+  //   const maxDate = new Date(today.setDate(today.getDate() + 10));
+  //   const year = maxDate.getFullYear();
+  //   const month = String(maxDate.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+  //   const day = String(maxDate.getDate()).padStart(2, '0');
+  //   return `${year}-${month}-${day}`;
+  // };
   return (
     <div style={styles.formContainer}>
       <h2 style={styles.heading}>Add a New Service</h2>
@@ -292,9 +306,11 @@ const ServiceForm = ({ onSubmit }) => {
           value={serviceDate}
           onChange={(e) => setServiceDate(e.target.value)}
           min={getTodayDate()} // Disable past dates
+         // max={getMaxDate()}
           required
-          style={styles.input}
+          style={styles.input}  
         />
+        {/* min={getTodayDate()} */}
         {errors.serviceDate && <div style={styles.error}>{errors.serviceDate}</div>}
         <select
           value={district}

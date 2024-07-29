@@ -17,14 +17,16 @@ const Register = () => {
   };
 
   const validatePassword = (password) => {
-    return password.length >= 6;
+        const re = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=<>?{}[\]~]).{6,}$/;
+    return re.test(password);
   };
 
   const validatePhoneNumber = (phoneNumber) => {
     const re = /^\d{10}$/;
+   
     return re.test(String(phoneNumber));
   };
-
+  
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
@@ -35,7 +37,7 @@ const Register = () => {
     }
 
     if (!validatePassword(password)) {
-      setError('Password must be at least 6 characters long');
+      setError('Password must be at least 6 characters longand  add some special characters and one letter should caps');
       return;
     }
 
@@ -43,11 +45,14 @@ const Register = () => {
       setError('Phone number must be 10 digits long');
       return;
     }
+    // const re = /^[5-9]\d{9}$/;
 
+    //return password.length >= 6;
     const role = 'user'; // Set default role to 'customer'
 
     try {
       await axios.post('http://localhost:5000/auth/register', { email, password, role, phoneNumber });
+      
       navigate('/login');
     } catch (error) {
       console.error('Error registering user', error);
