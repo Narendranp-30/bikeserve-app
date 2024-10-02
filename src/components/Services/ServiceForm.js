@@ -179,7 +179,8 @@ const ServiceForm = ({ onSubmit }) => {
       setServiceCenter('');
       setStatus('Pending'); // Reset status
       toast.success("Service is created successfully")
-    } catch (error) {
+    }
+     catch (error) {
       console.error('Error adding service', error);
       console.log('Error response data:', error.response.data);
       console.log('Error response status:', error.response.status);
