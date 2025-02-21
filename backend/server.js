@@ -10,12 +10,12 @@ const Service = require('./models/Services');
 const serviceRoutes = require('./routes/services');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/bike_service', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/bike_service')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
@@ -82,6 +82,12 @@ app.use('/api/services', serviceRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Please use a different port.`);
+  } else {
+    console.error('Server error:', err);
+  }
 });
 
 
